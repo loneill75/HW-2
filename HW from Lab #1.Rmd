@@ -1,0 +1,54 @@
+---
+title: 'HW from Lab #1'
+output: GitHub
+date: "2022-09-06"
+---
+
+```{r}
+how_many_rolls <- 100
+sim_rolls <- sample(1:6, how_many_rolls, replace = TRUE)
+```
+
+## R Markdown
+
+
+```{r}
+# for first time
+lots_of_sim_rolls <- sample(1:6,how_many_rolls, replace = TRUE)
+
+# do 49 more simulations
+for (indx in 1:99) {
+  sim_rolls <- sample(1:6,how_many_rolls, replace = TRUE)
+  lots_of_sim_rolls <- data.frame(lots_of_sim_rolls,sim_rolls)
+  }
+```
+
+
+
+```{r}
+how_many_sims <- 100
+sim_rolls_vec <- sample(1:6,(how_many_rolls*how_many_sims), replace = TRUE) # vectorized version
+```
+
+```
+Now if we want to analyze these rolls, for instance to see how many come up as 6, we can do that easily.
+```
+
+```{r}
+if_come_up_6 <- as.numeric(lots_of_sim_rolls == 6)
+mean(if_come_up_6)
+```
+
+```{r}
+if_come_up_6_vec <- as.numeric(sim_rolls_vec == 6)
+mean(if_come_up_6_vec)
+```
+
+```{r}
+if_come_up_6 <- (lots_of_sim_rolls == 6)
+```
+
+```
+Homework Answer:
+The outcome or probability of rolling on a six has a one out of six possibilities each toss for one-hundred tosses.  I don’t think it’s fair about some level of confidence because every outcome is different.  Even if you toss the dice one-hundred more times, that set will have different outcomes than the first set especially with the number of times the dice lands on a six.  I think the dice is fair enough that it will land on a number out of six possibilities.
+```
