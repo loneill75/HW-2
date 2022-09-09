@@ -1,10 +1,11 @@
 ---
-title: 'HW from Lab #1'
+title: 'HW from Lab #1 - Pt 2'
 output: GitHub
 date: "2022-09-06"
 ---
-
-
+---
+Group Names: Liam O'Neill; Valery Delgado; Holli Tai
+---
 ---
 100 rolls
 ---
@@ -32,9 +33,7 @@ how_many_sims <- 100
 sim_rolls_vec <- sample(1:6,(how_many_rolls*how_many_sims), replace = TRUE) # vectorized version
 ```
 
-```
-Now if we want to analyze these rolls, for instance to see how many come up as 6, we can do that easily.
-```
+
 
 ```{r}
 if_come_up_6 <- as.numeric(lots_of_sim_rolls == 6)
@@ -81,7 +80,35 @@ mean(if_come_up_6)
 ```
 
 
+```{r}
+how_many_rolls <- 36
+sim_rolls <- sample(1:6, how_many_rolls, replace = TRUE)
+
+lots_of_sim_rolls <- sample(1:6,how_many_rolls, replace = TRUE)
+
+for (indx in 1:80) {
+  sim_rolls <- sample(1:6,how_many_rolls, replace = TRUE)
+  lots_of_sim_rolls <- data.frame(lots_of_sim_rolls,sim_rolls)
+}
+
+how_many_sims <- 30
+sim_rolls_vec <- sample(1:6,(how_many_rolls*how_many_sims), replace = TRUE)
+
+if_come_up_6 <- as.numeric(lots_of_sim_rolls == 6)
+mean(if_come_up_6)
+
+if_come_up_6_vec <- as.numeric(sim_rolls_vec == 6)
+mean(if_come_up_6_vec)
+
+if_come_up_6 <- (lots_of_sim_rolls == 6)
+mean(if_come_up_6)
+```
+
+
 ```
 Homework Answer:
-The outcome or probability of rolling on a six has a one out of six possibilities each toss for one-hundred tosses.  I don’t think it’s fair about some level of confidence because every outcome is different.  Even if you toss the dice one-hundred more times, that set will have different outcomes than the first set especially with the number of times the dice lands on a six.  I think the dice is fair enough that it will land on a number out of six possibilities.
+
+Looking closely at the 100 roll example.  There are 100 posiblities that the dice could land on six.  There is no set boundaries for each role because you can't control what number it could land on.  Each toss is a risk like the stock market where it go up or go down (make money or lose money).  No fair chance that the dice could land on the number of preference. 
+
+As a whole, each set of rolls will have different outcomes of how many times the dice lands on the number six despite what you do to the dice.  I don’t think it’s fair about some level of confidence because every outcome is different.  Even if you toss the dice one-hundred more times, that set will have different outcomes than the first set especially with the number of times the dice lands on a six.  It's interesting how you don't know what number the dice could land knowing that there are six possibilites.  The mean outcome is alway different between the the 100 rolls to the 20 rolls section.
 ```
